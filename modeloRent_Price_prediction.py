@@ -123,7 +123,7 @@ def prediccion_precio(sq_mt_built, buy_price, n_rooms, n_bathrooms, has_parking,
     predicciones = regresion.predict(df_a_predecir)[0]
     return predicciones
 
-#Function Test
+#Test de Prediccion_precio
 ''' 
 input_data = prediccion_precio(75, 320000, 3, 2, 1, True, False, 'District 11: Moncloa', 'HouseType 4: Dúplex','2')
 print(input_data)
