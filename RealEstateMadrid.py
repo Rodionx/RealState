@@ -5,23 +5,22 @@ from modeloRent_Price_prediction import prediccion_precio,distritos,house_types,
 
 app = FastAPI()
 
-# Create the templates object for rendering Jinja2 templates
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="templates") #busca index.html en el directorio templates
 
 
-# Route to render the form with dynamic options
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse) 
 async def show_form(request: Request):
-    return templates.TemplateResponse("index.html", {
+    return templates.TemplateResponse("index.html", { # Validacion de datos para un dropdown menu
         "request": request,
         "valid_distritos": distritos,
         "valid_house_types": house_types,
         "valid_floors":floors
     })
 
-# Route to handle the form submission and predict the price
-@app.post("/predict")
-async def predict(
+
+@app.post("/predict") # Llama a la funcion de predcción
+async def predict( #Extrae los datos del los formularios con los id correspondientes en el html
+    # ID's ↓
     sq_mt_built: float = Form(...),
     buy_price: float = Form(...),
     n_rooms: int = Form(...),
@@ -33,14 +32,12 @@ async def predict(
     house_type: str = Form(...),
     floor: str = Form(...)
 ):
-    # Call the prediction function
     predicted_price = prediccion_precio(
         sq_mt_built, buy_price, n_rooms, n_bathrooms, has_parking,
         is_new_development, is_renewal_needed, distrito, house_type, floor
     )
 
-    # Return the predicted price and form inputs
-    return {
+    return { #Devuelve un diccionario para poder lee el resultado
         "Predicted Price": predicted_price,
         "Inputs": {
             "sq_mt_built": sq_mt_built,
@@ -54,4 +51,4 @@ async def predict(
             "house_type": house_type,
             "floor": floor
         }
-    }
+    } 
