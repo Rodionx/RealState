@@ -1,0 +1,62 @@
+'''
+[
+    "District 1: Arganzuela",
+    "District 2: Barajas",
+    "District 3: Carabanchel",
+    "District 4: Centro",
+    "District 5: Chamartín",
+    "District 6: Chamberí",
+    "District 7: Ciudad Lineal",
+    "District 8: Fuencarral",
+    "District 9: Hortaleza",
+    "District 10: Latina",
+    "District 11: Moncloa",
+    "District 12: Moratalaz",
+    "District 13: Puente de Vallecas",
+    "District 14: Retiro",
+    "District 15: Salamanca",
+    "District 17: Tetuán",
+    "District 18: Usera",
+    "District 19: Vicálvaro",
+    "District 20: Villa de Vallecas",
+    "District 21: Villaverde"
+]
+'''
+DATASET ORIGINAL
+
+['HouseType 4: Dúplex', 'HouseType 5: Áticos', 'HouseType 2: Casa o chalet', 'HouseType 1: Pisos', nan]
+
+DATASET LIMPIO
+'''
+
+['HouseType 5: Áticos', 'HouseType 4: Dúplex', 'HouseType 1: Pisos']
+'''
+
+FLOOR TYPES
+
+DATASET ORIGINAL
+['6', '5', '8', 'Semi-sótano exterior', '7', 'Semi-sótano interior', 
+nan, 'Entreplanta exterior', '4', '9', 'Sótano exterior', 'Semi-sótano',
+'Entreplanta interior', 'Sótano', 
+'Bajo', '3', 'Sótano interior', 'Entreplanta', '1', '2']
+
+
+DATASET LIMPIO
+Semi-sótano exterior
+2
+Sótano interior
+Bajo
+7
+Sótano
+4
+Semi-sótano
+3
+Entreplanta exterior
+Sótano exterior
+5
+Entreplanta interior
+8
+Semi-sótano interior
+1
+6
+9
