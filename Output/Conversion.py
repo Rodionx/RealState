@@ -32,3 +32,5 @@ sqlite_db = 'Madrid_Real_Estate_Def.db'  # Ruta a tu base de datos SQLite
 table_name = 'Datos'  # Nombre de la tabla en SQLite
 
 csv_to_sqlite(csv_file, sqlite_db, table_name)
+
+
