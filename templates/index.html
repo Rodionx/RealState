@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predict House Price</title>
+    <title>Madrid Real Estate Predictor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -10,12 +10,9 @@
     <!-- Header -->
     <header class="bg-blue-600 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">House Price Prediction</h1>
+            <h1 class="text-2xl font-bold">Predicción de Precios</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:underline">Home</a></li>
-                    <li><a href="#" class="hover:underline">About</a></li>
-                    <li><a href="#" class="hover:underline">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -45,21 +42,21 @@
                 <div class="mb-4">
                     <label for="has_parking" class="block text-gray-700 font-semibold">Has Parking:</label>
                     <select id="has_parking" name="has_parking" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <option value="1">Yes</option>
+                        <option value="1">Si</option>
                         <option value="0">No</option>
                     </select>
                 </div>
                 <div class="mb-4">
                     <label for="is_new_development" class="block text-gray-700 font-semibold">Is New Development:</label>
                     <select id="is_new_development" name="is_new_development" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <option value="1">Yes</option>
+                        <option value="1">Si</option>
                         <option value="0">No</option>
                     </select>
                 </div>
                 <div class="mb-4">
                     <label for="is_renewal_needed" class="block text-gray-700 font-semibold">Is Renewal Needed:</label>
                     <select id="is_renewal_needed" name="is_renewal_needed" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <option value="1">Yes</option>
+                        <option value="1">Si</option>
                         <option value="0">No</option>
                     </select>
                 </div>
@@ -87,7 +84,7 @@
                         {% endfor %}
                     </select>
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200">Predict</button>
+                <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200">Predecir</button>
             </form>
         </div>
     </main>
@@ -95,7 +92,6 @@
     <!-- Footer -->
     <footer class="bg-blue-600 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2023 House Price Prediction. All rights reserved.</p>
         </div>
     </footer>
 </body>

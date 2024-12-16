@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Data Display</title>
+    <title>Display de Datos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -13,9 +13,6 @@
             <h1 class="text-2xl font-bold">House Data Display</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:underline">Home</a></li>
-                    <li><a href="#" class="hover:underline">About</a></li>
-                    <li><a href="#" class="hover:underline">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,32 +40,33 @@
                 <tbody>
                     <!-- Example row, replace with dynamic data -->
                     <tr>
-                        <td class="py-2 px-4 border-b border-gray-200">100</td>
-                        <td class="py-2 px-4 border-b border-gray-200">€200,000</td>
-                        <td class="py-2 px-4 border-b border-gray-200">3</td>
-                        <td class="py-2 px-4 border-b border-gray-200">2</td>
-                        <td class="py-2 px-4 border-b border-gray-200">Yes</td>
-                        <td class="py-2 px-4 border-b border-gray-200">No</td>
-                        <td class="py-2 px-4 border-b border-gray-200">Yes</td>
-                        <td class="py-2 px-4 border-b border-gray-200">Centro</td>
-                        <td class="py-2 px-4 border-b border-gray-200">Apartment</td>
-                        <td class="py-2 px-4 border-b border-gray-200">5</td>
+                        <tr>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ results.sq_mt_built }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">€{{ "{:,.2f}".format(results.buy_price) }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ results.n_rooms }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ results.n_bathrooms }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ "Si" if results.has_parking == 1 else "No" }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ "Si" if results.is_new_development == 1 else "No" }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ "Si" if results.is_renewal_needed == 1 else "No" }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ results.distrito }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ results.house_type }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ results.floor }}</td>
+                        </tr>
                     </tr>
                     <!-- Repeat for each row of data -->
                 </tbody>
             </table>
             <div class="mt-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-2">Predicted Price</h3>
-                <p class="text-lg text-gray-700">€250,000</p>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Precio Estimado</h3>
+                <p class="text-lg text-gray-700"> 💶{{"{:,.2f}".format(results.rent_price) }} </p>
             </div>
-            <button class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200 mt-6">Save to Dataset</button>
+            <button class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200 mt-6">📑Guardar</button>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="bg-blue-600 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2023 House Data Display. All rights reserved.</p>
         </div>
     </footer>
 </body>

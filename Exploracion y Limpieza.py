@@ -14,7 +14,7 @@ houses_df = houses_df.drop(columns = ['Unnamed: 0'])
 
 #print(houses_df.columns)
 
-#print(houses_df.info())
+print(houses_df.info())
 
 #print(houses_df.head())
 
@@ -46,7 +46,7 @@ neighborhood =  house_df_def['neighborhood_id']
 
 price = pd.Series([abs(x) if x < 0 else x for x in price])  #convierte negaitvos a positivos
 
-def min_max(serie): #Normalización Min Max
+def min_max(serie): #Normalización Min Max  # De esto no se hizo nada
     minValor = serie.min()
     maxValor = serie.max()
     serie_minmax = (serie - minValor) / (maxValor - minValor)
@@ -63,6 +63,7 @@ plt.show
 #floor = set(house_df_def['floor'])
 #floor = list(floor)
 #print(floor)
+
 #NOTA: Hay mucha desviación entre los precios con minimos de 18 y maximos de 61k
 ## Lo mejor por ahora seria deshacerse de esos outliers y probar con los datos que tenemos
 
@@ -107,7 +108,8 @@ print(houses_df_filtrado.columns)
 
 print(houses_df_filtrado.info())
 
-print(houses_df_filtrado.describe().apply(lambda x: x.apply('{0:.5f}'.format)))#Describe sin notacion cientifica
+print(houses_df_filtrado.describe().apply(lambda x: x.apply('{0:.5f}'.format)))
+#Describe sin notacion cientifica, eliminando los ultimos 5 puntos decimales
 
 houses_df_filtrado['neighborhood_id'] =  houses_df_filtrado['neighborhood_id'].apply(lambda x: re.search(r'(District \d+: [\w\s]+)', x).group(0))
 #Elimina los barrios y deja la string solo en distritos 
