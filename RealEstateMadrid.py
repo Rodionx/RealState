@@ -19,7 +19,7 @@ async def show_form(request: Request):
 
 
 @app.post("/predict") # Llama a la funcion de predcción
-async def predict( #Extrae los datos del los formularios con los id correspondientes en el html
+async def predict(request: Request, #Extrae los datos del los formularios con los id correspondientes en el html
     # ID's ↓
     sq_mt_built: float = Form(...),
     buy_price: float = Form(...),
@@ -36,10 +36,8 @@ async def predict( #Extrae los datos del los formularios con los id correspondie
         sq_mt_built, buy_price, n_rooms, n_bathrooms, has_parking,
         is_new_development, is_renewal_needed, distrito, house_type, floor
     )
-
-    return { #Devuelve un diccionario para poder lee el resultado
-        "Predicted Price": predicted_price,
-        "Inputs": {
+    results =   {
+            "rent_price": predicted_price,
             "sq_mt_built": sq_mt_built,
             "buy_price": buy_price,
             "n_rooms": n_rooms,
@@ -50,5 +48,5 @@ async def predict( #Extrae los datos del los formularios con los id correspondie
             "distrito": distrito,
             "house_type": house_type,
             "floor": floor
-        }
-    } 
+            }
+    return templates.TemplateResponse("PredictPage.html", {"request": request, "results": results})
