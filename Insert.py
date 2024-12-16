@@ -1,71 +1,68 @@
 import sqlite3
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, JSONResponse
-from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
-
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")
 
 # Ruta al archivo de la base de datos y los datos de la imagen
 db_path = 'Madrid_Real_Estate_Def.db'
 
+
+# Función para calcular autoincremento
+
+table = "Predicciones"  
+get_next_id = lambda db_path, table: (lambda cur: cur.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0] + 1)(
+    sqlite3.connect(db_path).cursor()
+)
+
+# Obtener el próximo ID
+next_id = get_next_id(db_path, table)
+
+
+
 # Datos extraídos de la imagen
-default_data = {
-    "square_meters_built": 100,
-    "buying_price": 200000,
-    "number_of_rooms": 3,
-    "number_of_bathrooms": 2,
-    "has_parking": 'Yes',
-    "is_new_development": 'No',
-    "is_renewal_needed": 'Yes',
-    "distrito": 'Centro',
-    "house_type": 'Apartment',
-    "floor": 5,
-    "predicted_price": 250000
-}
+#         data = {
+#             "idPrediccion" : next_id,
+#             "rent_price": predicted_price,
+#             "sq_mt_built": sq_mt_built,
+#             "buy_price": buy_price,
+#             "n_rooms": n_rooms,
+#             "n_bathrooms": n_bathrooms,
+#             "has_parking": has_parking,
+#             "is_new_development": is_new_development,
+#             "is_renewal_needed": is_renewal_needed,
+#             "distrito": distrito,
+#             "house_type": house_type,
+#             "floor": floor
+# }
 
 # Modelo para recibir datos desde el cliente
-class PredictionData(BaseModel):
-    square_meters_built: int
-    buying_price: int
-    number_of_rooms: int
-    number_of_bathrooms: int
-    has_parking: str
-    is_new_development: str
-    is_renewal_needed: str
-    distrito: str
-    house_type: str
-    floor: int
-    predicted_price: int
+
 
 # Función para insertar datos en la base de datos SQLite
-def insert_prediction(db_path, data):
+def insert_prediction(data):
     try:
         # Conectar a la base de datos
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
-      
+        print(data)
         
         # Insertar los datos
         cursor.execute('''
             INSERT INTO predicciones (
-                square_meters_built, buying_price, number_of_rooms, number_of_bathrooms, 
-                has_parking, is_new_development, is_renewal_needed, distrito, house_type, 
-                floor, predicted_price
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                idPrediccion, metrosCuadrados, PrecioCompra, numHabitaciones, numBanos, 
+                parking, cNueva, reformable, distrito, tipoCasa, 
+                planta, prediccion
+            ) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         ''', (
-            data.square_meters_built,
-            data.buying_price,
-            data.number_of_rooms,
-            data.number_of_bathrooms,
-            data.has_parking,
-            data.is_new_development,
-            data.is_renewal_needed,
-            data.distrito,
-            data.house_type,
-            data.floor,
-            data.predicted_price
+            next_id,
+            data['sq_mt_built'],
+            data['buy_price'],
+            data['n_rooms'],
+            data['n_bathrooms'],
+            data['has_parking'],
+            data['is_new_development'],
+            data['is_renewal_needed'],
+            data['distrito'],
+            data['house_type'],
+            data['floor'],
+            data['rent_price']
         ))
         
         # Guardar cambios y cerrar conexión
@@ -76,13 +73,3 @@ def insert_prediction(db_path, data):
     finally:
         conn.close()
 
-# Ruta principal que renderiza el formulario HTML
-@app.get("/", response_class=HTMLResponse)
-def read_root(request: Request):
-    return templates.TemplateResponse("form.html", {"request": request})
-
-# Ruta para insertar datos usando FastAPI
-@app.post("/insert")
-def insert_data(data: PredictionData):
-    result = insert_prediction(db_path, data)
-    return JSONResponse(content=result)

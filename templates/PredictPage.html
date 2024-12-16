@@ -60,7 +60,24 @@
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Precio Estimado</h3>
                 <p class="text-lg text-gray-700"> 💶{{"{:,.2f}".format(results.rent_price) }} </p>
             </div>
-            <button class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200 mt-6">📑Guardar</button>
+
+            <form method="post" action="/insert">
+                <input type="hidden" name="sq_mt_built" value="{{ results.sq_mt_built }}">
+                <input type="hidden" name="buy_price" value="{{ '{:,.2f}'.format(results.buy_price) }}">
+                <input type="hidden" name="n_rooms" value="{{ results.n_rooms }}">
+                <input type="hidden" name="n_bathrooms" value="{{ results.n_bathrooms }}">
+                <input type="hidden" name="has_parking" value="{{ 'Si' if results.has_parking == 1 else 'No' }}">
+                <input type="hidden" name="is_new_development" value="{{ 'Si' if results.is_new_development == 1 else 'No' }}">
+                <input type="hidden" name="is_renewal_needed" value="{{ 'Si' if results.is_renewal_needed == 1 else 'No' }}">
+                <input type="hidden" name="distrito" value="{{ results.distrito }}">
+                <input type="hidden" name="house_type" value="{{ results.house_type }}">
+                <input type="hidden" name="floor" value="{{ results.floor }}">
+                <button type="submit"class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200 mt-6">📑Guardar</button>
+            </form>
+            
+            
+            
+
         </div>
     </main>
 

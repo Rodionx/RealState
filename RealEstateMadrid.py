@@ -2,6 +2,7 @@ from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from modeloRent_Price_prediction import prediccion_precio,distritos,house_types,floors
+from Insert import insert_prediction
 
 app = FastAPI()
 
@@ -36,6 +37,7 @@ async def predict(request: Request, #Extrae los datos del los formularios con lo
         sq_mt_built, buy_price, n_rooms, n_bathrooms, has_parking,
         is_new_development, is_renewal_needed, distrito, house_type, floor
     )
+    global results
     results =   {
             "rent_price": predicted_price,
             "sq_mt_built": sq_mt_built,
@@ -50,3 +52,11 @@ async def predict(request: Request, #Extrae los datos del los formularios con lo
             "floor": floor
             }
     return templates.TemplateResponse("PredictPage.html", {"request": request, "results": results})
+
+
+
+# Ruta para insertar datos usando FastAPI
+@app.post("/insert")
+async def insert_data():
+    insert_prediction(data=results)
+    return {"message": "Sus datos han sido insertados con exito"}
