@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Data Display</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">House Data Display</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">About</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-8">
+        <div class="bg-white shadow-lg rounded-lg p-8 w-full">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">House Data</h2>
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Square Meters Built</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Buying Price (€)</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Number of Rooms</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Number of Bathrooms</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Has Parking</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Is New Development</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Is Renewal Needed</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Distrito</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">House Type</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm leading-4 font-medium text-gray-600 uppercase tracking-wider">Floor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example row, replace with dynamic data -->
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">100</td>
+                        <td class="py-2 px-4 border-b border-gray-200">€200,000</td>
+                        <td class="py-2 px-4 border-b border-gray-200">3</td>
+                        <td class="py-2 px-4 border-b border-gray-200">2</td>
+                        <td class="py-2 px-4 border-b border-gray-200">Yes</td>
+                        <td class="py-2 px-4 border-b border-gray-200">No</td>
+                        <td class="py-2 px-4 border-b border-gray-200">Yes</td>
+                        <td class="py-2 px-4 border-b border-gray-200">Centro</td>
+                        <td class="py-2 px-4 border-b border-gray-200">Apartment</td>
+                        <td class="py-2 px-4 border-b border-gray-200">5</td>
+                    </tr>
+                    <!-- Repeat for each row of data -->
+                </tbody>
+            </table>
+            <div class="mt-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Predicted Price</h3>
+                <p class="text-lg text-gray-700">€250,000</p>
+            </div>
+            <button class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200 mt-6">Save to Dataset</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 House Data Display. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
