@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.preprocessing import StandardScaler
 
-df_Madrid_RealEstate = pd.read_csv('Output\\Madrid_Real_Estate_Def')
+df_Madrid_RealEstate = pd.read_csv('Output/Madrid_Real_Estate_Def')
 
 # Extraccion de Distritos y zonas y tipos de casas para la API
 
